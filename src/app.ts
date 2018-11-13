@@ -544,22 +544,6 @@
  * CLASSES DEMO
  */
 
-// Class is syntactic sugar for creating our own contructor function
-// and prototypal inheritance
-
-class Pizza {
-    name: string;
-    toppings: string[] = [];
-
-    constructor(name: string) {
-        this.name = name;
-    }
-
-    addTopping(topping: string) {
-        this.toppings.push(topping);
-    }
-}
-
 // JS way of creating classes
 
 // function Pizza(name: string) {
@@ -571,8 +555,142 @@ class Pizza {
 //     this.toppings.push(topping);
 // };
 
-const pizza = new Pizza('Pepperoni');
+// Class is syntactic sugar for creating our own contructor function
+// and prototypal inheritance
 
-pizza.addTopping('pepperoni');
+// Private members can be acessed from within the class itself
 
-console.log(pizza);
+// Not specifying private/public to a member means member is public
+
+// Readonly members can be accessed outside the class but cannot be modified
+// Readonly properties can be initialized either during declaration or in the constructor
+
+// Setters and getters are always public
+
+// class Sizes {
+//     constructor(public sizes: string[]) {}
+
+//     set availableSizes(sizes: string[]) {
+//         this.sizes = sizes;
+//     }
+
+//     get availableSizes() {
+//         return this.sizes;
+//     }
+// }
+
+// const sizes = new Sizes(['small', 'medium']);
+
+// // Invoke the getter
+// console.log(sizes.availableSizes);
+
+// // Invoke the setter
+// sizes.availableSizes = ['medium', 'large'];
+
+// // Invoke the getter
+// console.log(sizes.availableSizes);
+
+// class Pizza {
+//     public toppings: string[] = [];
+//     // public name: string;
+
+//     // constructor(name: string) {
+//     //     this.name = name;
+//     // }
+
+//     // The above lines of code from 567-571 are same as line no. 574
+//     // constructor(public name: string) {}
+    
+//     // Making name readonly
+//     constructor(readonly name: string) {}
+
+//     public addTopping(topping: string) {
+//         this.toppings.push(topping);
+//     }
+// }
+
+// const pizza = new Pizza('Pepperoni');
+
+// pizza.addTopping('pepperoni');
+
+// console.log(pizza);
+
+// ---------------------------------------------------------------------------------------- //
+
+/**
+ * CLASSES INHERITANCE AND ABSTRACT CLASSES DEMO
+ */
+
+// Abstract classes cannot be instantiated
+
+// Protected members are accessible within the class and classes extending them, not outside
+
+// interface SizesInterface {
+//     availableSizes: string[];
+// }
+
+// abstract class Sizes implements SizesInterface {
+//     constructor(protected sizes: string[]) {}
+
+//     set availableSizes(sizes: string[]) {
+//         this.sizes = sizes;
+//     }
+
+//     get availableSizes() {
+//         return this.sizes;
+//     }
+// }
+
+// interface PizzaInterface extends SizesInterface {
+//     readonly name: string;
+//     toppings: string[];
+//     updateSizes(sizes: string[]): void;
+//     addTopping(topping: string): void;
+
+// }
+
+// class Pizza extends Sizes implements PizzaInterface {
+//     public toppings: string[] = [];
+
+//     constructor(readonly name: string, sizes: string[]) {
+//         super(sizes);
+//     }
+
+//     public addTopping(topping: string) {
+//         this.toppings.push(topping);
+//     }
+
+//     public updateSizes(sizes: string[]) {
+//         this.sizes = sizes;
+//     }
+// }
+
+// const pizza = new Pizza('Pepperoni', ['small', 'medium']);
+
+// console.log(pizza.availableSizes);
+
+// pizza.updateSizes(['large']);
+
+// console.log(pizza.availableSizes);
+
+// // console.log(pizza.sizes); sizes not accessible here
+
+
+// ---------------------------------------------------------------------------------------- //
+
+/**
+ * STATIC PROPERTIES AND METHODS DEMO
+ */
+
+// Static functions come in handy when we want to create pure functions that don't
+// mutate or update data sets
+
+// class Coupon {
+//     static allowed = ['Pepperoni', 'Blazing Inferno'];
+
+//     static create(percentage: number) {
+//         return `PIZZA_RESTAURANT_${percentage}`;
+//     }
+// }
+
+// console.log(Coupon.create(25));
