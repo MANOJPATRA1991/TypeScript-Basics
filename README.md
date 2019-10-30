@@ -42,3 +42,20 @@ Available Resources:
 * [TypeScript Docs](https://www.typescriptlang.org)
 * [TypeScript Playground](https://www.typescriptlang.org/play)
 * [AST Explorer](https://astexplorer.net)
+
+## What is TypeScript?
+
+* Open source language by Microsoft
+* Static type system
+* superset of JavaScript
+* supports new ECMAScript features
+
+## Why use TypeScript?
+
+* Typed JavaScript, code quality and understanding
+* Types act as documentation
+* TypeScript is JavaScript
+* Type inference
+* Structural types
+
+> TypeScript is a typed superset of JavaScript that compiles to plain JavaScript
