@@ -15,7 +15,7 @@
 // const pizza = {
     // name: 'Blazing Inferno',
     // getName: function() {
-    //     // const self = this;
+    //     // DOESN'T CREATE ANY NEW SCOPE
     //     setTimeout(() => {
     //         console.log(this.name);
     //     }, 100);
