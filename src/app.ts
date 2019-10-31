@@ -544,6 +544,8 @@
  * CLASSES DEMO
  */
 
+// --------------------------------------------------------------------- //
+
 // JS way of creating classes
 
 // function Pizza(name: string) {
@@ -555,20 +557,53 @@
 //     this.toppings.push(topping);
 // };
 
+// --------------------------------------------------------------------- //
+
+// ES6 / TS way of creating classes
+// class Pizza2 {
+//     name: string; // public member
+//     toppings: string[] = []; // public member
+
+//     constructor(name: string) {
+//         this.name = name;
+//     }
+
+//     addTopping(topping: string) {
+//         this.toppings.push(topping);
+//     }
+// } compiles to 
+
+// var Pizza2 = /** @class */ (function() {
+//     function Pizza2(name: string) {
+//         this.name = name;
+//         this.toppings = [];
+//     }
+
+//     Pizza2.prototype.addTopping = function addTopping(topping: string) {
+//         this.toppings.push(topping);
+//     };
+    
+//     return Pizza2;
+// }());
+
+// --------------------------------------------------------------------- //
+
 // Class is syntactic sugar for creating our own contructor function
 // and prototypal inheritance
 
 // Private members can be acessed from within the class itself
 
-// Not specifying private/public to a member means member is public
+// Not specifying private/public to a member means member is public by default
 
 // Readonly members can be accessed outside the class but cannot be modified
 // Readonly properties can be initialized either during declaration or in the constructor
 
+// --------------------------------------------------------------------- //
+
 // Setters and getters are always public
 
 // class Sizes {
-//     constructor(public sizes: string[]) {}
+//     constructor(public sizes: string[]) {} // SHORTHAND for constructor(public sizes: string[]) { this.sizes = sizes }
 
 //     set availableSizes(sizes: string[]) {
 //         this.sizes = sizes;
@@ -577,7 +612,25 @@
 //     get availableSizes() {
 //         return this.sizes;
 //     }
-// }
+// } compiles to
+
+// var Sizes = /** @class */ (function() {
+//     function Sizes(sizes) {
+//         this.sizes = sizes;
+//     }
+//     Object.defineProperty(Sizes.prototype, "availableSizes", {
+//         get: function() {
+//             return this.sizes;
+//         },
+//         set: function(sizes) {
+//             this.sizes = sizes;
+//         },
+//         enumerable: true,
+//         configurable: true
+//     });
+// }());
+
+// --------------------------------------------------------------------- //
 
 // const sizes = new Sizes(['small', 'medium']);
 
@@ -598,7 +651,7 @@
 //     //     this.name = name;
 //     // }
 
-//     // The above lines of code from 567-571 are same as line no. 574
+//     // The above lines of code from 628-632 are same as line no. 635
 //     // constructor(public name: string) {}
     
 //     // Making name readonly
@@ -673,7 +726,7 @@
 
 // console.log(pizza.availableSizes);
 
-// // console.log(pizza.sizes); sizes not accessible here
+// // console.log(pizza.sizes); sizes not accessible here; only from within Sizes and Pizza classes`
 
 
 // ---------------------------------------------------------------------------------------- //
@@ -684,6 +737,8 @@
 
 // Static functions come in handy when we want to create pure functions that don't
 // mutate or update data sets
+
+// Static methods/properties can be utility functions, libraries or classes that do particular things
 
 // class Coupon {
 //     static allowed = ['Pepperoni', 'Blazing Inferno'];
